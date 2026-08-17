@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Linda Sipin — QA, fintech operations, production support, and technical documentation portfolio." name="description"/><meta content="Linda Sipin | QA, Fintech Operations &amp; Technical Documentation" property="og:title"/><meta content="QA, fintech operations, production support, and technical documentation portfolio focused on reliable, testable, well-documented products." property="og:description"/><meta content="website" property="og:type"/><meta content="summary_large_image" name="twitter:card"/><meta content="Linda Sipin | QA, Fintech Operations &amp; Technical Documentation" name="twitter:title"/><meta content="QA, fintech operations, production support, and technical documentation portfolio." name="twitter:description"/>
+<title>Linda Sipin | QA, Fintech Operations &amp; Technical Documentation</title>
+<style>
+    :root {
+      --bg: #0d1117;
+      --panel: #151b23;
+      --panel-2: #1b2330;
+      --text: #eef3f8;
+      --muted: #aab6c4;
+      --line: #2a3544;
+      --accent: #78a9ff;
+      --accent-2: #8fe1c1;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(12px);
+      background: rgba(13,17,23,.9);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap {
+      min-height: 64px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .brand { font-weight: 800; letter-spacing: .2px; color: var(--text); }
+    .navlinks { display: flex; flex-wrap: wrap; gap: 18px; font-size: .94rem; }
+    .navlinks a { color: var(--muted); }
+    header {
+      padding: 92px 0 66px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(120,169,255,.18), transparent 30%),
+        radial-gradient(circle at 10% 20%, rgba(143,225,193,.10), transparent 28%);
+      border-bottom: 1px solid var(--line);
+    }
+    .kicker {
+      color: var(--accent-2); font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; font-size: .78rem;
+    }
+    h1 {
+      font-size: clamp(2.6rem, 7vw, 5.3rem);
+      line-height: 1.02; margin: 12px 0 20px; max-width: 980px;
+    }
+    .lead { font-size: clamp(1.06rem, 2vw, 1.35rem); color: var(--muted); max-width: 820px; }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 11px 16px; border-radius: 10px; font-weight: 750;
+      border: 1px solid var(--line); color: var(--text); background: var(--panel);
+    }
+    .btn.primary { background: var(--accent); color: #0a1424; border-color: transparent; }
+    section { padding: 70px 0; border-bottom: 1px solid var(--line); }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); margin: 0 0 14px; }
+    h3 { margin-top: 0; }
+    .section-intro { color: var(--muted); max-width: 820px; margin-bottom: 28px; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; }
+    .card {
+      grid-column: span 4; background: var(--panel); border: 1px solid var(--line);
+      border-radius: 16px; padding: 22px;
+    }
+    .card.wide { grid-column: span 6; }
+    .card.full { grid-column: 1 / -1; }
+    .card p, .card li { color: var(--muted); }
+    .label {
+      display: inline-block; border: 1px solid var(--line); border-radius: 999px;
+      padding: 5px 9px; margin: 4px 5px 4px 0; font-size: .82rem; color: var(--muted);
+      background: var(--panel-2);
+    }
+    .timeline { display: grid; gap: 18px; }
+    .role {
+      background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px;
+    }
+    .role-head { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .role-title { font-weight: 800; font-size: 1.1rem; }
+    .role-meta { color: var(--muted); font-size: .92rem; }
+    .case {
+      background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 26px;
+    }
+    .case + .case { margin-top: 18px; }
+    .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .mini-title { font-weight: 800; color: var(--accent-2); margin-bottom: 4px; }
+    details {
+      background: var(--panel); border: 1px solid var(--line);
+      border-radius: 14px; padding: 16px 18px; margin: 12px 0;
+    }
+    summary { cursor: pointer; font-weight: 800; }
+    pre {
+      white-space: pre-wrap; word-wrap: break-word; color: #dce7f5;
+      background: #0a0f15; border: 1px solid var(--line); border-radius: 10px;
+      padding: 16px; overflow: auto; font-size: .9rem; line-height: 1.55;
+    }
+    .notice {
+      border-left: 3px solid var(--accent-2); padding: 14px 16px;
+      background: rgba(143,225,193,.07); color: var(--muted); border-radius: 0 10px 10px 0;
+    }
+    footer { padding: 34px 0 50px; color: var(--muted); font-size: .9rem; }
+    @media (max-width: 800px) {
+      .card, .card.wide { grid-column: 1 / -1; }
+      .case-grid { grid-template-columns: 1fr; }
+      .navlinks { display: none; }
+      header { padding-top: 70px; }
+    }
+    @media print {
+      nav, .cta { display: none; }
+      body { background: white; color: #111; }
+      header, section { background: white; border-color: #ddd; }
+      .card, .role, .case, details { background: white; border-color: #ddd; }
+      .lead, .section-intro, .role-meta, .card p, .card li, footer { color: #444; }
+      .label { background: white; color: #333; border-color: #ccc; }
+      pre { background: #f7f7f7; color: #111; border-color: #ddd; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+<div class="wrap">
+<a class="brand" href="#top">Linda Sipin</a>
+<div class="navlinks">
+<a href="#about">About</a>
+<a href="#strengths">Strengths</a>
+<a href="#experience">Experience</a><a href="#current-work">Freelance Project</a>
+<a href="#case-studies">Case Studies</a>
+<a href="#samples">Samples</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
+<header id="top">
+<div class="wrap">
+<div class="kicker">Quality Assurance · Fintech · Operations · Documentation</div>
+<h1>I turn complex workflows into reliable, testable, well-documented products.</h1>
+<p class="lead">QA, fintech operations, production support, investor relations, and client-facing operations professional with experience across trading platforms, blockchain, forex, private equity support, e-commerce, and regulated technology. I bridge product, engineering, support, operations, and business teams to find risk early, improve delivery quality, and keep complex workflows understandable and dependable.</p>
+<div class="cta">
+<a class="btn primary" href="#case-studies">View selected work</a><a class="btn" href="https://www.linkedin.com/in/mlsipin/" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+<a class="btn" href="mailto:len.sipin@outlook.ph">Email me</a>
+<button class="btn" onclick="window.print()">Print / Save as PDF</button>
+</div>
+</div>
+</header>
+<main>
+<section id="about">
+<div class="wrap">
+<h2>About</h2>
+<p class="section-intro">
+          My background combines software quality assurance, production support, technical documentation,
+          customer and client operations, financial services, and regional business experience. This lets me
+          evaluate a product not only as a tester, but also from the perspective of users, support teams,
+          operations teams, and stakeholders who depend on accurate workflows.
+        </p>
+<div class="notice">This public portfolio intentionally avoids employer and client identification for confidential current work, as well as credentials, production data, internal URLs, customer records, proprietary screenshots, unpublished product details, and employer-confidential documentation.</div>
+</div>
+</section>
+<section id="strengths">
+<div class="wrap">
+<h2>Core Strengths</h2>
+<p class="section-intro">The areas where I can contribute most quickly.</p>
+<div class="grid">
+<article class="card">
+<h3>QA &amp; Release Readiness</h3>
+<p>Manual E2E, regression, smoke, UAT, exploratory, edge-case testing, defect validation, risk-based coverage, and release readiness.</p>
+</article>
+<article class="card">
+<h3>API &amp; Backend Validation</h3>
+<p>GraphQL/API validation, UI-to-backend cross-checks, request/response review, browser developer tools, and data-level investigation.</p>
+</article>
+<article class="card">
+<h3>QA Leadership</h3>
+<p>Team coordination, workload planning, test coverage review, backlog triage, mentoring, workflow standardization, and QA reporting.</p>
+</article>
+<article class="card">
+<h3>Production Support</h3>
+<p>Client issue triage, troubleshooting, reproduction, escalation, payment/trading workflow validation, and cross-team follow-through.</p>
+</article>
+<article class="card">
+<h3>Technical Documentation</h3>
+<p>Test plans, test cases, defect reports, requirements traceability, release notes, operational guides, workflows, and knowledge-base content.</p>
+</article>
+<article class="card">
+<h3>Operations &amp; Client Experience</h3>
+<p>Order and payment operations, onboarding support, logistics, escalations, regional operations, stakeholder communication, and process improvement.</p>
+</article>
+<article class="card">
+<h3>Investor Relations &amp; Partnerships</h3>
+<p>Investor communications, cross-border relationship management, institutional partnerships, fundraising support, client acquisition, and stakeholder coordination across Asia-focused markets.</p>
+</article></div>
+</div>
+</section>
+<section id="experience">
+<div class="wrap">
+<h2>Experience Highlights</h2>
+<p class="section-intro">A focused view of the experience most relevant to QA, product and technical support, fintech, operations, investor relations, and client-facing roles.</p>
+<div class="timeline">
+<article class="role">
+<div class="role-head">
+<div>
+<div class="role-title">Independent QA &amp; Technical Documentation Consultant — Confidential Regulated Healthcare Technology Project</div>
+<div class="role-meta">2026 · Freelance / Project-Based</div>
+</div>
+<div class="role-meta">Client &amp; Product Details Intentionally Withheld</div>
+</div>
+<ul><li>Built and formalized an end-to-end QA program for a regulated healthcare technology product, covering test strategy, reusable manual test cases, regression, UAT, traceability, evidence, and release readiness.</li><li>Designed and executed coverage for regulated mobile workflows, including event and participant data, receipts/OCR, role-based access, authentication, integrations, compliance logic, data persistence, and error handling.</li><li>Structured Azure DevOps QA assets and governance, including test suites, shared parameters, datasets, environment configurations, defect standards, coverage mapping, and release-readiness documentation.</li><li>Developed a Python/Appium automation foundation for real-device iPad testing, with automated scenarios mapped back to governed manual coverage and high-value regression paths.</li><li>Created technical documentation and delivery governance across requirements, defects, release notes, operational playbooks, onboarding, environment readiness, and cross-functional stakeholder alignment.</li></ul>
+</article>
+<article class="role">
+<div class="role-head">
+<div>
+<div class="role-title">Software QA Lead / Production Support Engineer — Shift Markets LLC</div>
+<div class="role-meta">2018–2025</div>
+</div>
+<div class="role-meta">Fintech · Crypto · Trading Platforms</div>
+</div>
+<ul>
+<li>Led QA and production-support work across exchange, back-office, API, mobile, DeFi, wallets, deposits/withdrawals, trading, authentication, and client workflows.</li>
+<li>Managed test planning, manual test case creation, smoke/regression/UAT, API and GraphQL validation, defect tracking, fix verification, and release readiness.</li>
+<li>Led a distributed QA team spanning manual and automation work, including task delegation, coverage review, mentoring, and reporting.</li>
+<li>Standardized QA workflows using structured test coverage, backlog triage, regression cycles, productivity visibility, and clearer cross-functional reporting.</li>
+</ul>
+</article>
+<article class="role">
+<div class="role-head">
+<div>
+<div class="role-title">Operations Specialist — Miss Amara</div>
+<div class="role-meta">2021–2024 · Contract</div>
+</div>
+<div class="role-meta">E-Commerce · AU/NZ/HK</div>
+</div>
+<ul>
+<li>Supported order processing, fulfillment coordination, logistics tracking, refunds, escalations, and product inquiries across multiple regional markets.</li>
+<li>Coordinated with logistics, finance, marketing, and customer-support teams to resolve customer and operational issues.</li>
+<li>Maintained accuracy across payment, order, regional, and documentation requirements.</li>
+</ul>
+</article><article class="role">
+<div class="role-head">
+<div>
+<div class="role-title">Investor Relations Associate — Finex HK / BluFin Advisory</div>
+<div class="role-meta">Oct 2025–Apr 2026 · Project-Based</div>
+</div>
+<div class="role-meta">Private Equity · Fundraising · Investor Relations</div>
+</div>
+<ul>
+<li>Supported Asia-focused private equity and fundraising projects through investor communications, inquiry handling, meeting coordination, and preparation of investor-facing materials.</li>
+<li>Maintained investor information, follow-ups, relationship-management records, fund updates, and project communications supporting internal stakeholders and roadshow preparation.</li>
+<li>Added recent exposure to private equity fundraising, investor engagement, cross-border relationship management, and highly detail-sensitive client communication.</li>
+</ul>
+</article><article class="role">
+<div class="role-head">
+<div>
+<div class="role-title">Partnerships Manager — Desto Blockchain LLC</div>
+<div class="role-meta">Apr 2018–Dec 2019</div>
+</div>
+<div class="role-meta">Blockchain · Financial Services · APAC Partnerships</div>
+</div>
+<ul>
+<li>Drove institutional partnerships across APAC and supported the company’s regional presence in blockchain-based financial services.</li>
+<li>Strengthens the commercial and relationship-management side of my fintech background alongside my later technical QA and production-support work.</li>
+</ul>
+</article><article class="role">
+<div class="role-head">
+<div>
+<div class="role-title">Business Development Manager — APAC, Fullerton Markets Ltd.</div>
+<div class="role-meta">Aug 2017–Mar 2018</div>
+</div>
+<div class="role-meta">Forex · Trading · Institutional &amp; Retail Clients</div>
+</div>
+<ul>
+<li>Managed institutional and self-directed client relationships across APAC, supporting regional market growth and client acquisition.</li>
+<li>Provides direct commercial-domain experience in forex and trading that later informed my work supporting and testing financial trading platforms.</li>
+</ul>
+</article><article class="role">
+<div class="role-head">
+<div>
+<div class="role-title">Business Development Manager — APAC &amp; Europe, OPC Business Support Sdn. Bhd.</div>
+<div class="role-meta">Jul 2013–Jul 2017</div>
+</div>
+<div class="role-meta">Forex · Social Trading · Institutional Acquisition</div>
+</div>
+<ul>
+<li>Supported institutional client-acquisition strategies for FX Primus Europe and Tradesto Corporation across APAC and European markets.</li>
+<li>Built multi-year experience in brokerage, forex, social-trading, and cross-border client-development environments before transitioning more deeply into blockchain and fintech product operations.</li>
+</ul>
+</article><article class="role">
+<div class="role-head">
+<div>
+<div class="role-title">Client Operations &amp; Business Support — Global BPO &amp; Financial Services</div>
+<div class="role-meta">Jan 2000–Jul 2013</div>
+</div>
+<div class="role-meta">Banking · Telecom · Technology · Insurance · Global Service Operations</div>
+</div>
+<ul>
+<li>Held progressive roles across operations, business development, customer support, account services, and client-facing support in global service environments.</li>
+<li>Supported major international client programs including Suncorp Group AU, T-Mobile US, AT&amp;T, Microsoft, HSBC Global Banking and Markets (GBM), and other telecom and financial-services accounts.</li>
+<li>Built the foundation for my later work in QA and production support through high-volume escalation handling, account support, service coordination, process follow-through, and cross-functional communication.</li>
+</ul>
+</article>
+</div>
+</div>
+</section>
+<section id="current-work">
+<div class="wrap">
+<h2>Selected Freelance Project</h2>
+<p class="section-intro">A confidential freelance engagement focused on building the quality, documentation, and delivery framework for a regulated healthcare technology product. The client, product name, internal architecture, and proprietary implementation details are intentionally withheld. The examples below describe the work at a portfolio-safe level.</p>
+<div class="grid">
+<article class="card wide">
+<h3>Enterprise QA Framework</h3>
+<p>
+          Building a reusable QA structure that covers smoke, functional, regression, UAT, negative, edge-case,
+          integration, data-validation, role/access, auditability, and release-readiness testing across a mobile product
+          and its supporting services.
+        </p>
+<p>
+          The framework includes standardized test-case writing, reusable preconditions, shared datasets, traceability,
+          evidence capture, defect governance, environment coverage, and release gates.
+        </p>
+</article>
+<article class="card wide">
+<h3>Regulated Workflow Validation</h3>
+<p>
+          Designing test coverage around healthcare-professional interactions, event and attendee workflows, receipt and
+          document processing, spend/compliance logic, review and submission, authentication, role-based access,
+          data integrity, and downstream expense/reporting integration.
+        </p>
+<p>
+          Compliance-focused testing is written to remain reusable and auditable rather than being tied to one receipt,
+          one person, or one test record.
+        </p>
+</article>
+<article class="card wide">
+<h3>Mobile QA &amp; Automation</h3>
+<p>
+          Establishing real-device iPad automation using Python, Appium, WebDriverAgent, pytest, and structured test
+          mappings. Automation is being layered onto governed manual coverage rather than treated as a separate,
+          disconnected test effort.
+        </p>
+<p>
+          Current automation targets include navigation, event workflows, participant management, receipt handling,
+          review/submission, and high-value regression paths.
+        </p>
+</article>
+<article class="card wide">
+<h3>Technical Documentation System</h3>
+<p>
+          Creating a documentation model that connects business requirements, functional specifications, QA coverage,
+          defect findings, release readiness, release notes, operational procedures, and stakeholder-facing knowledge.
+        </p>
+<p>
+          The goal is a maintainable documentation trail where requirements, testing, production behavior, and release
+          communication stay aligned.
+        </p>
+</article>
+<article class="card wide">
+<h3>Defect &amp; Release Governance</h3>
+<p>
+          Defining consistent standards for defect titles, reproduction steps, expected/actual behavior, environment
+          details, evidence, risk, compliance impact, traceability, acceptance criteria, and cross-platform tracking.
+        </p>
+<p>
+          I also support release-readiness documentation so shipped changes can be understood by technical and
+          non-technical stakeholders.
+        </p>
+</article>
+<article class="card wide">
+<h3>Environment &amp; Onboarding Readiness</h3>
+<p>
+          Structuring onboarding, environment provisioning, configuration, testing, tabletop exercises, sign-off gates,
+          and production-readiness activities across development, integration, UAT, preview/demo, and production stages.
+        </p>
+<p>
+          This includes dependencies such as SSO/MFA, test data, mobile-device provisioning, backend environments,
+          document/OCR services, and downstream integrations.
+        </p>
+</article>
+</div>
+<div class="notice" style="margin-top:22px;">
+      Portfolio safety note: these descriptions intentionally omit company names, client names, product names, internal
+      URLs, screenshots, ticket IDs, credentials, proprietary data models, real user information, unreleased features,
+      and confidential business rules.
+    </div>
+</div>
+</section>
+<section id="case-studies">
+<div class="wrap">
+<h2>Selected Case Studies</h2>
+<p class="section-intro">
+          These summaries are intentionally sanitized. They demonstrate method and scope without exposing customer data,
+          confidential systems, credentials, internal URLs, or proprietary documentation.
+        </p>
+<article class="case">
+<h3>1. QA Operating Model for a Multi-Surface Fintech Platform</h3>
+<div class="case-grid">
+<div>
+<div class="mini-title">Challenge</div>
+<p>A product ecosystem spanning exchange, back office, API, mobile, wallet, payment, trading, and client-facing workflows required consistent QA coverage across teams and releases.</p>
+<div class="mini-title">My Role</div>
+<p>QA leadership, test planning, release validation, defect triage, team coordination, and production-support collaboration.</p>
+</div>
+<div>
+<div class="mini-title">Approach</div>
+<p>I helped structure test coverage, regression cycles, QA backlog triage, defect documentation, release-readiness checks, and reporting so product and engineering teams had clearer visibility into quality risk.</p>
+<div class="mini-title">Impact</div>
+<p>More consistent QA execution, clearer release visibility, stronger traceability, and reduced risk of missed coverage.</p>
+</div>
+</div>
+</article>
+<article class="case">
+<h3>2. Production-Support Investigation Across UI, Backend, and Transaction Workflows</h3>
+<div class="case-grid">
+<div>
+<div class="mini-title">Challenge</div>
+<p>Client-reported issues in financial products can originate in UI behavior, configuration, transaction state, backend services, or external integrations.</p>
+<div class="mini-title">My Role</div>
+<p>Reproduce issues, isolate likely failure points, verify transaction behavior, document evidence, and coordinate with engineering, product, and client-facing teams.</p>
+</div>
+<div>
+<div class="mini-title">Approach</div>
+<p>Start from the user journey, reproduce under controlled conditions, compare UI behavior with API/backend evidence, identify scope and severity, and give developers concise, reproducible findings.</p>
+<div class="mini-title">Impact</div>
+<p>Faster handoffs between support and engineering, better defect reproducibility, and more reliable resolution communication.</p>
+</div>
+</div>
+</article>
+<article class="case">
+<h3>3. Multi-Market E-Commerce Operations</h3>
+<div class="case-grid">
+<div>
+<div class="mini-title">Challenge</div>
+<p>Orders across Australia, New Zealand, and Hong Kong required accurate coordination among fulfillment, logistics, payments, refunds, and customer support.</p>
+<div class="mini-title">My Role</div>
+<p>Operational follow-through, issue escalation, cross-team coordination, and customer-impact resolution.</p>
+</div>
+<div>
+<div class="mini-title">Approach</div>
+<p>Track each order or escalation to an owner and next action, prioritize urgent customer-impacting issues, and maintain documentation until the issue is closed.</p>
+<div class="mini-title">Impact</div>
+<p>Smoother operational handoffs and dependable follow-through across regional workflows.</p>
+</div>
+</div>
+</article>
+<article class="case">
+<h3>4. Regulated Healthcare QA Program From Fragmented Requirements</h3>
+<div class="case-grid">
+<div>
+<div class="mini-title">Challenge</div>
+<p>
+                A regulated mobile workflow needed comprehensive, reusable QA coverage across user journeys,
+                integrations, compliance behavior, role permissions, data persistence, and multiple deployment environments.
+              </p>
+<div class="mini-title">My Role</div>
+<p>
+                QA architecture, test-plan design, manual coverage, defect governance, data strategy,
+                documentation, release-readiness support, and automation foundation.
+              </p>
+</div>
+<div>
+<div class="mini-title">Approach</div>
+<p>
+                I organized coverage into functional suites, standardized reusable preconditions and expected results,
+                mapped tests to controlled datasets, separated business-language requirements from technical evidence,
+                and established traceability from finding to fix to release documentation.
+              </p>
+<div class="mini-title">Outcome</div>
+<p>
+                A structured QA system that is easier to execute, audit, expand, automate, and hand over across teams
+                without relying on undocumented tribal knowledge.
+              </p>
+</div>
+</div>
+</article>
+<article class="case">
+<h3>5. Documentation and Release-Governance Model</h3>
+<div class="case-grid">
+<div>
+<div class="mini-title">Challenge</div>
+<p>
+                Requirements, QA findings, implementation work, release status, and stakeholder communication existed
+                across different tools and levels of technical detail.
+              </p>
+<div class="mini-title">My Role</div>
+<p>
+                Define how technical work becomes clear, traceable stakeholder documentation without exposing raw engineering noise.
+              </p>
+</div>
+<div>
+<div class="mini-title">Approach</div>
+<p>
+                I created conventions for defect documentation, acceptance criteria, release readiness, release-note
+                categorization, compliance/data-impact callouts, technical-documentation structure, and knowledge-base publishing.
+              </p>
+<div class="mini-title">Outcome</div>
+<p>
+                A more coherent path from requirement → implementation → QA validation → release decision → production documentation.
+              </p>
+</div>
+</div>
+</article>
+</div>
+</section>
+<section id="samples">
+<div class="wrap">
+<h2>Work Samples</h2>
+<p class="section-intro">
+          The examples below are fictionalized demonstrations created for this portfolio. They show how I structure QA and support work without revealing employer-confidential information.
+        </p>
+<details>
+<summary>Sample test case — Wallet withdrawal validation</summary>
+<pre>Title: [Wallet] Successful withdrawal with a valid destination
+
+Objective:
+Verify that an authenticated user can submit a valid withdrawal and that the UI, API response, and transaction history remain consistent.
+
+Preconditions:
+- Approved test environment
+- Test user with sufficient balance
+- Valid destination address
+- User has completed required authentication
+
+Steps / Expected Results:
+1. Open Wallet &gt; Withdraw.
+   Expected: Withdrawal form loads with the correct asset and available balance.
+
+2. Enter a valid destination and supported amount.
+   Expected: Inputs are accepted and any applicable fee/total is calculated correctly.
+
+3. Submit and complete required verification.
+   Expected: A single withdrawal request is created and a confirmation state is shown.
+
+4. Review transaction history.
+   Expected: The withdrawal appears once with the expected amount, fee, destination, timestamp, and status.
+
+5. Validate through approved API/backend evidence.
+   Expected: Backend record matches the user-visible transaction and no duplicate transaction exists.</pre>
+</details>
+<details>
+<summary>Sample defect report — Transaction status mismatch</summary>
+<pre>Title: [Transaction History] Completed withdrawal remains Pending after successful processing
+
+Environment:
+UAT / Approved test account
+
+Reproduction:
+1. Complete a valid withdrawal.
+2. Confirm successful processing through approved backend/API evidence.
+3. Return to Transaction History.
+4. Refresh the page.
+
+Actual:
+The transaction remains displayed as Pending even though the backend record is Completed.
+
+Expected:
+The UI should display the current authoritative transaction status within the defined refresh/synchronization behavior.
+
+Impact:
+Users may incorrectly believe funds are still processing and may contact support or retry an action unnecessarily.
+
+Evidence to attach:
+- Sanitized screenshot
+- Request/correlation ID
+- Timestamp
+- API response with sensitive fields removed
+- Browser/network logs where permitted</pre>
+</details>
+<details>
+<summary>Sample release-readiness checklist</summary>
+<pre>Release Readiness
+- Scope and acceptance criteria reviewed
+- Critical user journeys covered
+- Smoke suite passed
+- Targeted regression passed
+- Known defects reviewed and dispositioned
+- High-risk integrations validated
+- Role/access behavior verified
+- Data persistence and error recovery checked
+- Release notes drafted
+- Support-impact notes prepared
+- Evidence attached and traceable
+- Production validation plan defined
+- Rollback/escalation ownership confirmed</pre>
+</details>
+<details>
+<summary>Sample support investigation framework</summary>
+<pre>1. Confirm user impact and urgency.
+2. Capture environment, account type, time, workflow, and exact symptom.
+3. Reproduce safely using approved test data.
+4. Compare expected vs. observed behavior.
+5. Check browser/app logs, API behavior, transaction state, and configuration as permitted.
+6. Determine whether issue is user-specific, environment-specific, or systemic.
+7. Record reproducible steps and evidence.
+8. Escalate to the correct owner with severity and business impact.
+9. Retest the fix.
+10. Confirm resolution and update user-facing/support documentation if needed.</pre>
+</details>
+</div>
+</section>
+<section id="tools">
+<div class="wrap">
+<h2>Tools &amp; Working Knowledge</h2>
+<p class="section-intro">Tools are a means to an outcome; my focus is always on reproducibility, traceability, user impact, and clear communication.</p>
+<div>
+<span class="label">TestRail</span>
+<span class="label">Asana</span>
+<span class="label">Jira</span>
+<span class="label">Postman</span>
+<span class="label">GraphQL</span>
+<span class="label">Browser DevTools</span>
+<span class="label">BrowserStack</span>
+<span class="label">Playwright</span>
+<span class="label">Cypress</span>
+<span class="label">SQL</span>
+<span class="label">DBeaver</span>
+<span class="label">MySQL Workbench</span>
+<span class="label">Salesforce</span>
+<span class="label">Gorgias</span>
+<span class="label">Cin7</span>
+<span class="label">Slack</span>
+<span class="label">Microsoft 365</span>
+<span class="label">Google Workspace</span>
+<span class="label">Azure DevOps</span><span class="label">Appium</span><span class="label">pytest</span><span class="label">WebDriverAgent</span><span class="label">PostgreSQL</span><span class="label">Supabase</span><span class="label">Azure AI Services</span><span class="label">iOS/iPadOS QA</span><span class="label">Private Equity Support</span><span class="label">Investor Relations</span><span class="label">Forex</span><span class="label">Blockchain/Web3</span><span class="label">Trading Platforms</span></div>
+</div>
+</section>
+<section id="contact">
+<div class="wrap">
+<h2>Contact</h2>
+<p class="section-intro">
+          Based in the Philippines and experienced working with distributed international teams.
+          For QA, product/technical support, client success/onboarding, fintech operations, or technical-documentation opportunities:
+        </p>
+<div class="cta">
+<a class="btn primary" href="mailto:len.sipin@outlook.ph">len.sipin@outlook.ph</a><a class="btn" href="https://www.linkedin.com/in/mlsipin/" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+      © 2026 Linda Sipin. Portfolio case studies and work samples are sanitized or fictionalized where necessary to protect employer, client, and user confidentiality.
+    <br/><a href="https://www.linkedin.com/in/mlsipin/" rel="noopener noreferrer" target="_blank">LinkedIn</a></div>
+</footer>
+</body>
+</html>
